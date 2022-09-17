@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Book = () => (
+const Book = ({ book }) => (
   <ul>
     <li className="book__container">
-      <small>Action</small>
-      <h2>The Hunger Games</h2>
-      <p>Suzanne Collins</p>
+      <small>{book.genre}</small>
+      <h2>{book.title}</h2>
+      <p>{book.author}</p>
       <div className="cta__container">
         <button type="submit">Comments</button>
         <button type="submit">Remove</button>
@@ -14,5 +15,17 @@ const Book = () => (
     </li>
   </ul>
 );
+
+Book.defaultProps = {
+  book: {},
+};
+
+Book.propTypes = {
+  book: {
+    genre: PropTypes.string,
+    title: PropTypes.string,
+    author: PropTypes.string,
+  },
+};
 
 export default Book;
