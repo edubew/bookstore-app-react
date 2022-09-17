@@ -7,7 +7,7 @@ const InputBook = () => (
     <form>
       <input type="text" name="name" placeholder="Book title..." required />
       <input type="text" name="name" placeholder="Author..." required />
-      <button type="submit">ADD BOOK</button>
+      <button className="add__btn" type="submit">ADD BOOK</button>
     </form>
   </div>
 );
