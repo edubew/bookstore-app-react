@@ -1,35 +1,14 @@
-import React, { useState } from 'react';
+import React, { useSelector } from 'react-redux';
 import InputBook from './InputBook';
 import Book from './Book';
 
 const BookList = () => {
-  // eslint-disable-next-line
-  const [books, setBooks] = useState([
-    {
-      id: 1,
-      genre: 'Action',
-      title: 'The Hunger Games',
-      author: 'Suzanne Collins',
-    },
-    {
-      id: 2,
-      genre: 'Science Fiction',
-      title: 'Dune',
-      author: 'Frank Herbert',
-    },
-    {
-      id: 3,
-      genre: 'Economy',
-      title: 'Capital in the Twenty-First Century',
-      author: 'Suzanne Collins',
-    },
-  ]);
-
+  const bookList = useSelector((state) => state.books);
   return (
     <div>
       <ul>
-        {books.map((book) => (
-          <Book key={book.id} id={book.id} book={book} />
+        {bookList.books.map((book) => (
+          <Book key={book.id} title={book.title} author={book.author} id={book.id} book={book} />
         ))}
       </ul>
       <InputBook />
