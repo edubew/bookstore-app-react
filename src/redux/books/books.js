@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-const ADD_BOOK = 'bookstore-app-react/books/InputBook';
+const ADD_BOOK = 'bookstore-app-react/books/inputBook';
 const REMOVE_BOOK = 'bookstore-app-react/books/removeBook';
 
 const initialState = {
@@ -43,7 +43,7 @@ export default function booksReducer(state = initialState, action) {
   }
 }
 
-export const InputBook = (title, author) => ({
+export const inputBook = (title, author) => ({
   type: ADD_BOOK,
   payload: {
     title,
