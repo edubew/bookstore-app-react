@@ -31,7 +31,7 @@ git clone git clone https://github.com/edubew/bookstore-app-react.git
 ```
 2. Open terminal and cd into project and install the dependencies
 ```bash
-cd Math-Magician
+cd bookstore-app-react
 npm install
 ```
 
