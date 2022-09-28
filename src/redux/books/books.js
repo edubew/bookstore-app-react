@@ -1,17 +1,13 @@
 /* eslint-disable camelcase */
 import axios from 'axios';
 
-const BOOKS_URL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/nkkE9yz3EyYpHkSSidbQ/books';
+const BOOKS_URL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/R9iogCYmIf2eEINhPNCJ/books';
 
 const ADD_BOOK = 'bookstore-app-react/books/inputBook';
 const REMOVE_BOOK = 'bookstore-app-react/books/removeBook';
 const FETCH_BOOKS = 'bookstore-app-react/books/fetchBooks';
 
-const initialState = {
-  books: [],
-  status: 'idle',
-  error: null,
-};
+const initialState = [];
 
 // Add Reducers
 export default function booksReducer(state = initialState, action) {
@@ -34,7 +30,7 @@ export const fetchBooks = () => async (dispatch) => {
       type: FETCH_BOOKS,
       payload: response.data,
     });
-    return [...response.data];
+    return response.data;
   } catch (err) {
     return err.message;
   }

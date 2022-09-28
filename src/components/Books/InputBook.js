@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import { inputBook } from '../../redux/books/books';
 import './books.css';
 
@@ -7,6 +8,7 @@ const InputBook = () => {
   const [state, setState] = useState({
     title: '',
     author: '',
+    category: 'Fictional',
   });
 
   const dispatch = useDispatch();
@@ -19,7 +21,14 @@ const InputBook = () => {
   };
 
   const handleSubmit = () => {
-    dispatch(inputBook(state.title, state.author));
+    const {
+      title, author, category,
+    } = state;
+    if (title.length > 0 && author.length > 0) {
+      dispatch(inputBook({
+        title, author, item_id: uuidv4(), category,
+      }));
+    }
     state.title = '';
     state.author = '';
   };
