@@ -1,7 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
-// import { type } from '@testing-library/user-event/dist/type';
-// import { object } from 'prop-types';
 import InputBook from './InputBook';
 import Book from './Book';
 import { fetchBooks } from '../../redux/books/books';
