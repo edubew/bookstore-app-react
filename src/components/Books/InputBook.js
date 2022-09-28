@@ -20,7 +20,8 @@ const InputBook = () => {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const {
       title, author, category,
     } = state;
@@ -36,10 +37,10 @@ const InputBook = () => {
   return (
     <div className="input__container">
       <h1>ADD NEW BOOK</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input type="text" name="title" placeholder="Book title..." value={state.title} required onChange={handleChange} />
         <input type="text" name="author" placeholder="Author..." value={state.author} required onChange={handleChange} />
-        <button className="add__btn" type="submit" onClick={handleSubmit}>ADD BOOK</button>
+        <button className="add__btn" type="submit">ADD BOOK</button>
       </form>
     </div>
   );
