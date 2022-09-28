@@ -48,7 +48,7 @@ export const inputBook = ({
     });
     return dispatch(fetchBooks());
   } catch (err) {
-    return err.message;
+    return Promise.reject(err);
   }
 };
 
