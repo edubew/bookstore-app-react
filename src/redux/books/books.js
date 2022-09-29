@@ -1,60 +1,58 @@
-import { v4 as uuidv4 } from 'uuid';
+/* eslint-disable camelcase */
+import axios from 'axios';
+
+const BOOKS_URL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/R9iogCYmIf2eEINhPNCJ/books';
 
 const ADD_BOOK = 'bookstore-app-react/books/inputBook';
 const REMOVE_BOOK = 'bookstore-app-react/books/removeBook';
+const FETCH_BOOKS = 'bookstore-app-react/books/fetchBooks';
 
-const initialState = {
-  books: [
-    {
-      id: uuidv4(),
-      genre: 'Action',
-      title: 'The Hunger Games',
-      author: 'Suzanne Collins',
-    },
-    {
-      id: uuidv4(),
-      genre: 'Science Fiction',
-      title: 'Dune',
-      author: 'Frank Herbert',
-    },
-    {
-      id: uuidv4(),
-      genre: 'Economy',
-      title: 'Capital in the Twenty-First Century',
-      author: 'Suzanne Collins',
-    },
-  ],
-};
+const initialState = [];
 
 // Add Reducers
 export default function booksReducer(state = initialState, action) {
   switch (action.type) {
-    case ADD_BOOK: {
-      const newBook = [...state.books, action.payload];
-      return { ...state.books, books: newBook };
-    }
+    case ADD_BOOK:
+      return action.payload;
+    case FETCH_BOOKS:
+      return action.payload;
     case REMOVE_BOOK:
-      return {
-        ...state,
-        books: state.books.filter((book) => book.id !== action.payload.id),
-      };
+      return action.payload;
     default:
       return state;
   }
 }
 
-export const inputBook = (title, author) => ({
-  type: ADD_BOOK,
-  payload: {
-    title,
-    author,
-    id: uuidv4(),
-  },
-});
+export const fetchBooks = () => async (dispatch) => {
+  try {
+    const response = await axios.get(BOOKS_URL);
+    dispatch({
+      type: FETCH_BOOKS,
+      payload: response.data,
+    });
+    return response.data;
+  } catch (err) {
+    return err.message;
+  }
+};
 
-export const removeBook = (id) => ({
-  type: REMOVE_BOOK,
-  payload: {
-    id,
-  },
-});
+export const inputBook = ({
+  title, author, item_id, category,
+}) => async (dispatch) => {
+  try {
+    await axios.post(BOOKS_URL, {
+      title,
+      author,
+      item_id,
+      category,
+    });
+    return dispatch(fetchBooks());
+  } catch (err) {
+    return Promise.reject(err);
+  }
+};
+
+export const removeBook = (id) => async (dispatch) => {
+  await axios.delete(`${BOOKS_URL}/${id}`);
+  dispatch(fetchBooks());
+};
