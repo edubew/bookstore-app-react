@@ -1,51 +1,15 @@
-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 2.2rem;
-  box-shadow: 3px 8px 8px #999;
-}
-
-.logo {
-  text-decoration: none;
-  font-size: 2rem;
-  font-weight: 600;
-  color: rgb(51, 182, 226);
-}
-
-nav {
-  display: flex;
-  gap: 2rem;
-  margin-right: 50%;
-}
-
-.nav__item {
-  text-decoration: none;
-  font-size: 1.1rem;
-  right: 50%;
-  color: #000;
-}
-
-.nav__item:hover,
-.nav__item:focus {
-  color: gray;
-}
-
-.login {
-  position: absolute;
-  right: 8%;
-  font-size: 1.2rem;
-  color: rgb(51, 182, 226);
-  padding: 0.8rem;
-  border: 1px solid #999;
-  border-radius: 50%;
+.booklist__container {
+  margin-top: 3rem;
 }
 
 .book__card {
   display: grid;
-  grid-template-columns: 50% 25% 20%;
+  grid-template-columns: 50% 25% 15%;
   background: #fffcfc;
   list-style: none;
   margin-bottom: 1.2rem;
+  margin-left: 5%;
+  margin-right: 5%;
   padding: 1rem;
   border: 1px solid rgb(235, 221, 221);
 }
@@ -78,7 +42,7 @@ nav {
 .progress__container {
   display: grid;
   grid-template-columns: 20% 2%;
-  gap: 1rem;
+  gap: 2rem;
   position: relative;
   align-items: center;
 }
@@ -130,6 +94,7 @@ nav {
   margin-top: 1.5rem;
   border-radius: 0.2rem;
 }
+
 .input__container {
   margin: 2rem;
   padding: 2rem;
